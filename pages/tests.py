@@ -1,25 +1,29 @@
 from django.test import SimpleTestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
+from .views import HomePageView
 
 
 class HomePageViewTests(SimpleTestCase):
 
-    def test_homepageview_status_code(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
+    def setUp(self):
+        url = reverse('home')
+        self.response = self.client.get(url)
 
-    def test_homepageview_urlname_status_code(self):
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
+    def test_homepageview_status_code(self):
+        self.assertEqual(self.response.status_code, 200)
  
     def test_homepageview_template_used(self):
-        response = self.client.get('/')
-        self.assertTemplateUsed(response, 'home.html')
+        self.assertTemplateUsed(self.response, 'home.html')
 
     def test_homepageview_contains_correct_html(self):
-        response = self.client.get('/')
-        self.assertContains(response, "HomePage")
+        self.assertContains(self.response, "HomePage")
 
     def test_homepageview_does_not_contain_correct_html(self):
-        response = self.client.get('/')
-        self.assertNotContains(response, "I am glad to be a benefactor of this shit!!!")
+        self.assertNotContains(self.response, "I am glad to be a benefactor of this shit!!!")
+
+    def test_homepage_url_resolves_to_homepageview(self):
+        view = resolve('/')
+        self.assertEqual(
+            view.func.__name__,
+            HomePageView.as_view().__name__
+        )
