@@ -5,6 +5,8 @@ from .views import HomePageView
 
 class HomePageViewTests(SimpleTestCase):
 
+    # this setUp function is the place to define attributes that will be
+    # used by muliple other methods so as to keep your code dry
     def setUp(self):
         url = reverse('home')
         self.response = self.client.get(url)
