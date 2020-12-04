@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/home/darkbot/.local/share/virtualenvs/BookStore-77Tct6_X/bin/python"
+    "python.pythonPath": "/home/darkbot/.local/share/virtualenvs/BookStore-77Tct6_X/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
