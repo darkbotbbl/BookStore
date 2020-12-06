@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Home{% endblock %}</title>
-</head>
-<body>
+{% extends '_base.html' %}
+
+<title>{% block title %}Home{% endblock %}</title>
     
+{% block content %}
+    <h1>HomePage</h1>
 
-    {% block content %}
-        <h1>HomePage</h1>
-
-        <div>
-            {% if user.is_authenticated %}
-                <p>Hi, {{ user.email }}</p>
-                <p>You can logout by clicking this button</p>
-                <a href="{% url 'logout' %}"><button>Logout</button></a>
-            {% else %}
-                <p>You are logged out</p>
-                <a href="{% url 'login' %}"><button>Login</button></a>
-                <a href="{% url 'signup' %}"><button>Signup</button></a>
-            {% endif %}
-        </div>
-    {% endblock content %}
-
-</body>
-</html>
+    <div>
+        {% if user.is_authenticated %}
+            <p>Hi, {{ user.email }}</p>
+            <p>You can logout by clicking this button</p>
+            <a href="{% url 'logout' %}"><button>Logout</button></a>
+        {% else %}
+            <p>You are logged out</p>
+            <a href="{% url 'login' %}"><button>Login</button></a>
+            <a href="{% url 'signup' %}"><button>Signup</button></a>
+        {% endif %}
+    </div>
+{% endblock content %}
