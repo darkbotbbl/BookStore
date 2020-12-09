@@ -10,15 +10,21 @@ services:
       - 8000:8000
     depends_on: 
       - db
+    environment: 
+      - SECRET_KEY=%uu7x3q=1b^q!zu)nan3g4-_sitsa#=htrog2vqa=+)@daetg2
+      - DEBUG=1
 
   db:
     image: postgres:latest
     volumes: 
       - postgres_data:/var/lib/postgresql/data/
     environment: 
-      POSTGRES_DB: postgres
-      POSTGRES_USER: bookstore_owner
-      POSTGRES_PASSWORD: testpass1234
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=bookstore_owner
+      - POSTGRES_PASSWORD=testpass1234
 
 
 volumes: 
