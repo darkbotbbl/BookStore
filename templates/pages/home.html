@@ -5,15 +5,14 @@
 {% block content %}
     <h1>HomePage</h1>
 
-    <div>
-        {% if user.is_authenticated %}
-            <p>Hi, {{ user.email }}</p>
-            <p>You can logout by clicking this button</p>
-            <a href="{% url 'logout' %}"><button>Logout</button></a>
-        {% else %}
-            <p>You are logged out</p>
-            <a href="{% url 'login' %}"><button>Login</button></a>
-            <a href="{% url 'signup' %}"><button>Signup</button></a>
-        {% endif %}
-    </div>
+    {% if user.is_authenticated %}
+        <p>Hi, {{ user.email }}</p>
+        <p>You can logout by clicking this button</p>
+        <a href="{% url 'account_logout' %}"><button class="btn btn-outline-danger">Logout</button></a>
+    {% else %}
+        <p>You are logged out</p>
+        <a href="{% url 'account_login' %}"><button class="btn btn-outline-primary">Login</button></a>
+        <a href="{% url 'account_signup' %}"><button class="btn btn-outline-secondary">Signup</button></a>
+    {% endif %}
+
 {% endblock content %}

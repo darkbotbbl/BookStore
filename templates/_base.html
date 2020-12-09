@@ -27,14 +27,20 @@
 							<a class="nav-link disabled" href="#">Welcome {{ user.email }}</a>
 						<li>
 						<li class="nav-item ">
-							<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+							<a class="nav-link" href="{% url 'account_logout' %}">
+								<button class="btn btn-danger">Logout</button>
+							</a>
 						</li>
 					{% else %}
 						<li class="nav-item active">
-							<a class="nav-link" href="{% url 'login'  %}">Login<span class="sr-only">(current)</span></a>
+							<a class="nav-link" href="{% url 'account_login'  %}">
+								<button class="btn btn-outline-primary">Login</button><span class="sr-only">(current)</span>
+							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{% url 'signup' %}">Signup</a>
+							<a class="nav-link" href="{% url 'account_signup' %}">
+								<button class="btn btn-outline-secondary">Signup</button>
+							</a>
 						</li>
 					{% endif %}
 				</ul>
@@ -42,9 +48,11 @@
 		</nav>
 	</header>
 
-    {% block content %}
+	<div class="container mt-4">
+		{% block content %}
 
-    {% endblock content %}
+		{% endblock content %}
+	</div>
 
 	<script src="{% static 'js/jquery/jquery.min.js' %}"></script>
 	<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
