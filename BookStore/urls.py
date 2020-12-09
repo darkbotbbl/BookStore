@@ -7,9 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # user authentication - django auth 
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),
 
     # local
-    path('accounts/', include('users.urls')),
     path('', include('pages.urls')),
 ]
