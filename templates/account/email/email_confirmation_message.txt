@@ -1,0 +1,19 @@
+{% load account %}
+{% user_display user as user_display %}
+{% load i18n %}
+{% autoescape off %}
+    {% blocktrans with site_name=current_site.name domain_name=current_site.domain %}
+        Hello {{ user_display }}, from {{ site_name }}!
+
+        You are receiving this email because {{ user_display }} provided this email
+        during the creation of a {{ site_domain }} account.
+
+        If this is you, go to {{ activate_url }} to confirm the account.
+
+        Kindly ignore this email if it is not you.
+
+    {% endblocktrans %}
+{% endautoescape %}
+{% blocktrans with site_name=current_site.name domain_name=current_site.domain %}
+Thank You From {{ site_name }}!!! {{ site_domain }}
+{% endblocktrans %}
