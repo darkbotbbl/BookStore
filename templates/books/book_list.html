@@ -4,8 +4,11 @@
 
 
 {% block content %}
-    {% for book in object_list %}
-        <h3 class="font-weight-bold text-danger">{{ book.title }}</h3>
+    <h2 class="text-primary">Books</h2>
+    <hr />
+
+    {% for book in books %}
+        <h2 class="font-weight-bold text-danger">{{ book.title }}</h2>
         <p class="text-info">{{ book.author }}</p>
         <p class="text-primary">{{ book.price }}</p>
         <hr />
