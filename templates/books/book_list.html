@@ -4,13 +4,12 @@
 
 
 {% block content %}
-    <h2 class="text-primary">Books</h2>
+    <h1 class="text-danger">Books</h1>
     <hr />
 
     {% for book in books %}
-        <h2 class="font-weight-bold text-danger">{{ book.title }}</h2>
+        <h3 class="font-weight-bold"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
         <p class="text-info">{{ book.author }}</p>
-        <p class="text-primary">{{ book.price }}</p>
         <hr />
     {% endfor %}
 {% endblock content %}
