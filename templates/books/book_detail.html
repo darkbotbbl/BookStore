@@ -11,5 +11,16 @@
     <h2 class='mb-3'>Title: {{ book.title }}</h2>
     <p class="text-primary">Author: {{ book.author }}</p>
     <p class="text-primary">Price: ${{ book.price }}</p>
+    <hr />
+    <hr />
+
+    <h4 class="text-primary">Reviews</h4>
+    {% for review in book.reviews.all %}
+        <div class="">
+            <p>Author: {{ review.author }}</p>
+            <p>Message: {{ review.message }}</p>
+        </div>
+        <hr />
+    {% endfor %}
 
 {% endblock content %}
